@@ -1,7 +1,7 @@
-surf_string_rho.py: string_rho.dat
-		surf_string_rho.py
+surf_string_rho.py: string_0.00100.dat
+		python surf_string_rho.py string_0.00100.dat
 
-string_rho.dat: string.x
+string_0.00100.dat: string.x
 		./string.x 0.001
 
 string.x: string.c

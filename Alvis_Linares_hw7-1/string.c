@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
+
 
 //definicion de constantes
 #define LON 101
@@ -17,10 +19,19 @@ int main(int argc, char **argv){
   //definicion de variables  
   int i;
   double x;
-  
-  FILE *f = fopen("string_rho.dat", "w");
-  
   double rho = atof(argv[1]);
+
+  char arr[sizeof(rho)];
+
+  snprintf(arr,sizeof(rho),"%f",rho);
+
+  char nombre[20];
+  strcpy (nombre, "string_");
+  strcat (nombre, arr);
+  strcat (nombre, ".dat");
+
+  FILE *f = fopen(nombre, "w");  
+  
   double c = sqrt(TEN/rho);
   int n_iter = TIEMPO*MOD; //numero de iteraciones que se realizaran-para alcanzar los 120 s con dt 0.005
   double dx = (double) LON/(N_PUNTOS);
